@@ -1,6 +1,7 @@
 const Store = require('flux/utils').Store;
 const AppDispatcher = require('../dispatcher/dispatcher');
 const BenchStore = new Store(AppDispatcher);
+const BenchConstants = require('../constants/bench_constants');
 
 let _benches = {};
 
@@ -10,7 +11,17 @@ BenchStore.all = function() {
 
 function resetAllBenches(benches) {
   _benches = benches;
-  BenchStore.__omitChange();
+  BenchStore.__emitChange();
+};
+
+BenchStore.__onDispatch = function(payload) {
+  switch (payload.actionType) {
+    case BenchConstants.BENCHES_RECEIVED:
+      resetAllBenches(payload.benches);
+      break;
+    default:
+
+  }
 };
 
 module.exports = BenchStore;
