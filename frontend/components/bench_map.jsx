@@ -32,7 +32,6 @@ const BenchMap = React.createClass({
   _handleChange() {
     this.benchesToAdd().forEach(this.createMarkerFromBench);
     this.markersToRemove().forEach(this.removeMarker);
-    console.log(this.markers);
   },
   benchesToAdd(){
     const currentBenchIds = this.markers.map( marker => marker.benchId );
