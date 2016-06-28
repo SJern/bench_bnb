@@ -10,7 +10,8 @@ BenchStore.all = function() {
 };
 
 function resetAllBenches(benches) {
-  _benches = benches;
+  _benches = {};
+  benches.forEach(bench => _benches[bench.id] = bench);
   BenchStore.__emitChange();
 };
 

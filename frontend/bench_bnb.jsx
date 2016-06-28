@@ -5,15 +5,15 @@ const Router = reactRouter.Router;
 const Route = reactRouter.Route;
 const hashHistory = reactRouter.hashHistory;
 
-const BenchStore = require('./stores/bench_store');
+const Search = require('./components/search');
 
 const routes = (
-  <p></p>
+  <Route path='/' component={Search} />
 );
 
 document.addEventListener("DOMContentLoaded", function () {
   ReactDOM.render(
-    <p>"Hi Benches~"</p>,
+    <Router history={hashHistory}>{routes}</Router>,
     document.getElementById('content')
   );
 });
